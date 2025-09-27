@@ -27,10 +27,10 @@ function Home() {
     }
   };
 
-  const getData = async () => {
+  const getData = async (loc) => {
     try {
       const res = await axios.get('http://localhost:3001/reviews', {
-        params: { location: 'Owens' }
+        params: { location: loc }
       });
       console.log(res.data);
       setResponse(res.data);
