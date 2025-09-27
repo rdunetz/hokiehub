@@ -3,8 +3,31 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import axios from 'axios';
+import { useState } from 'react';
 
 function Home() {
+  const [response, setResponse] = useState(null);
+
+  const sendData = async (type, location, rating, image, description) => {
+    const data = {
+      "type": type,
+      "location": location,
+      "review": {
+        "rating": rating,
+        "image": image,
+        "description": description
+      }
+    };
+
+    try {
+      const res = await axios.post("http://localhost:3001/addReview", data);
+      setResponse(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <Container maxWidth={false} className="Home">
       <Box className="Home-main">
@@ -16,14 +39,6 @@ function Home() {
           Discover authentic student reviews on dining, gyms, study spots, and
           more across campus. All written by fellow Hokies, for Hokies.
         </Typography>
-
-        <Button
-          variant="contained"
-          size="large"
-          className="Home-button"
-        >
-          Add a Review
-        </Button>
 
         <img src="vtMap.png" alt="VT Map" className="Home-image" />
       </Box>
