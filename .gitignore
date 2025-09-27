@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /back/.env
+
+/back/hokie-hub-firebase-adminsdk-fbsvc-4bd57a41c5.json

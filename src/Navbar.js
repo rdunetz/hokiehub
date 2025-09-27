@@ -17,8 +17,8 @@ import HubIcon from '@mui/icons-material/Hub';
 
 const pages = [
     { label: 'Dining', path: 'dining' },
-    { label: 'Gym', path: 'gym' },
-    { label: 'Study', path: 'study' },
+    // { label: 'Gym', path: 'gym' },
+    // { label: 'Study', path: 'study' },
 ];  
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -95,25 +95,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: '#2C3E50',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           {pages.map((page) => (
                 <Button

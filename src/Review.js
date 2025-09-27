@@ -1,17 +1,26 @@
 // src/Review.js
 
 import React, { useState } from 'react';
-import { Box, TextField, Button, Rating, Typography, Stack } from '@mui/material';
+import { Box, TextField, Button, Rating, Typography, Stack, Autocomplete } from '@mui/material';
 import axios from 'axios';
 
 // The form component
 const ReviewForm = () => {
   // State for each input field
-  const [type, setType] = useState('');
   const [location, setLocation] = useState('');
   const [rating, setRating] = useState(0);
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
+
+  const diningHalls = [
+    { label: 'West End', value: "West" },
+    { label: 'Owens Food Court', value: "Owens" },
+    { label: 'Dietrick Hall', value: "Dietrick" },
+    { label: 'Squires Food Court', value: "Squires" },
+    { label: 'Turner Place', value: "Turner" },
+    { label: "D2", value: "D2" },
+    { label: 'Perry Place', value: "Perry" }, 
+  ]
 
   // Handler for form submission
   const handleSubmit = (event) => {
@@ -19,15 +28,21 @@ const ReviewForm = () => {
     event.preventDefault();
 
     // Call the submission function passed via props
-    sendData(type, location, rating, image, description);
+    const res = sendData(location, rating, image, description);
 
     // Optional: Clear the form fields after submission
-    setType('');
     setLocation('');
     setRating(0);
     setImage('');
     setDescription('');
-    window.history.back();
+    // window.history.back();
+
+    if (res !== null) {
+      alert("Review submitted successfully!");
+      window.history.back(); // only runs if the API succeeds
+    } else {
+      alert("Failed to submit review. Please try again.");
+    }
 
   };
 
@@ -46,8 +61,10 @@ const ReviewForm = () => {
 
     try {
       const res = await axios.post("http://localhost:3001/addReview", data);
+      return res;
     } catch (err) {
       console.error(err);
+      return null;
     }
   };
 
@@ -72,23 +89,32 @@ const ReviewForm = () => {
       </Typography>
 
       <Stack spacing={2}>
-        <TextField
-          label="Type (e.g., Restaurant, Park)"
-          variant="outlined"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          required
-          fullWidth
-        />
-
-        <TextField
+        {/* <TextField
           label="Location"
           variant="outlined"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           required
           fullWidth
-        />
+        /> */}
+        <Autocomplete
+  disablePortal
+  options={diningHalls}
+  getOptionLabel={(option) => option.label}
+  sx={{ width: '100%' }}
+  value={diningHalls.find((hall) => hall.value === location) || null}
+  onChange={(event, newValue) => {
+    setLocation(newValue ? newValue.value : '');
+  }}
+  renderInput={(params) => (
+    <TextField
+      {...params}
+      label="Dining Hall"
+      required
+    />
+  )}
+/>
+
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Typography component="legend">Rating:</Typography>
