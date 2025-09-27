@@ -16,9 +16,17 @@ admin.initializeApp({
 
 const db = admin.database();
 
+const locationMap = new Map();
+locationMap.set('westend', 'West');
+locationMap.set('owensfoodcourt', 'Owens');
+locationMap.set('dietrickhall', 'Dietrick');
+locationMap.set('squiresfoodcourt', 'Squires');
+locationMap.set('turnerplace', 'Turner');
+locationMap.set('d2', 'D2');
+locationMap.set('perryplace', 'Perry');
 
 app.get('/reviews', (req, res) => {
-  const location = req.query.location;
+  const location = locationMap.get(req.query.location);
   console.log(location);
 
   db.ref('/Dining Halls/' + location).once('value').then((snapshot) => {
