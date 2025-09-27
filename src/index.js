@@ -4,17 +4,14 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import './index.css';
 import App from './App';
 import Home from './Home';
+import NavBar from './Navbar'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <nav style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
-        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
-        <Link to="/about" style={{ marginRight: "10px" }}>About</Link>
-        <Link to="/contact">Contact</Link>
-      </nav>
+      <NavBar/>
 
       <Routes>
         <Route path="/" element={<Home />} />

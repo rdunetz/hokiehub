@@ -1,77 +1,52 @@
-:root {
-  --main-bg: #ffffff;          /* white background */
-  --highlight-red: #e63946;    /* red highlight */
-  --highlight-accent: #1d3557; /* dark blue accent */
-  --text-color: #1d1d1d;       /* main text color */
-}
-
 .Home {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  padding: 20px;
-  background-color: var(--highlight-red);
-  color: var(--text-color);
-}
-
-.Home-nav {
   display: flex;
-  justify-content: flex-end; 
-  padding: 10px 20px;
-  background-color: var(--highlight-accent);
-}
-
-.Home-nav nav a {
-  color: var(--main-bg);
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.Home-nav nav a:hover {
-  color: var(--highlight-red);
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #F9FAFB; /* light background */
 }
 
 .Home-main {
-  max-width: 800px;
-  margin: 40px auto;
   text-align: center;
-  background-color: var(--highlight-red);
+  max-width: 80%;
+  padding: 2rem;
+  background: #FFFFFF; /* card surface */
+  /* border-radius: 16px; */
+  box-shadow: 0px 8px 24px rgba(44, 62, 80, 0.1); /* soft shadow */
 }
 
-.Home-main h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: var(--text-color);
+.Home-title {
+  font-weight: 700;
+  color: #2C3E50; /* primary deep navy */
+  margin-bottom: 1rem;
 }
 
-.Home-main h2 {
-  font-size: 1.5rem;
-  font-weight: normal;
-  margin-bottom: 30px;
-  line-height: 1.5;
-  color: var(--text-color);
+.Home-title .accent {
+  color: #E67E22; /* secondary warm orange */
+}
+
+.Home-subtitle {
+  color: #7F8C8D; /* text secondary */
+  margin-bottom: 2rem;
 }
 
 .Home-button {
-  margin-bottom: 30px;
-  background-color: var(--highlight-red);
-  color: var(--main-bg);
-  transition: background-color 0.3s;
+  background-color: #E67E22 !important; /* orange CTA */
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
 }
 
 .Home-button:hover {
-  background-color: var(--highlight-accent);
+  background-color: #cf711f !important; /* darker orange hover */
 }
 
-.Home-map {
+.Home-image {
+  margin-top: 2rem;
   max-width: 100%;
   height: auto;
-  border: 2px solid var(--highlight-accent);
-  border-radius: 10px;
-}
-
-.small-image {
-  width: 700px;
-  height: auto;
+  border-radius: 12px;
+  border: 3px solid #2C3E50; /* ties in primary color */
 }
