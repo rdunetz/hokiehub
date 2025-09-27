@@ -56,6 +56,7 @@ function Home() {
           size="large"
           className="Home-button"
           onClick={getData}
+          href ="/Review"
         >
           Add a Review
         </Button>

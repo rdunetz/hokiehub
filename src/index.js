@@ -6,6 +6,7 @@ import App from './App';
 import Home from './Home';
 import NavBar from './Navbar'
 import reportWebVitals from './reportWebVitals';
+import Review from './Review';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/review" element={<Review />} />
         {/* <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} /> */}
       </Routes>
