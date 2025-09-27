@@ -17,24 +17,28 @@ admin.initializeApp({
 const db = admin.database();
 
 
-app.get('/', (req, res) => {
-  db.ref('/').once('value').then((snapshot) => {
+app.get('/reviews', (req, res) => {
+  const location = req.query.location;
+  console.log(location);
+
+  db.ref('/Dining Halls/' + location).once('value').then((snapshot) => {
     const data = snapshot.val();
-    res.send(data);
+    const arr = Object.values(data);
+    console.log(arr);
+    res.send(arr);
   });
 })
 
 app.post('/addReview', (req, res) => {
   const body = req.body;
 
-  const type = body.type;
   const location = body.location;
   const review = body.review;
 
   db.ref(type + '/' + location + '/').once('value').then((snapshot) => {
     const reviewID = Object.keys(snapshot.val()).length;
 
-    db.ref(type + '/' + location + '/' + 'review' + reviewID).update(review);
+    db.ref('Dining Halls/' + location + '/review' + reviewID).update(review);
   });
 })
 

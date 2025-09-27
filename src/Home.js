@@ -9,9 +9,8 @@ import { useState } from 'react';
 function Home() {
   const [response, setResponse] = useState(null);
 
-  const sendData = async (type, location, rating, image, description) => {
+  const sendData = async (location, rating, image, description) => {
     const data = {
-      "type": type,
       "location": location,
       "review": {
         "rating": rating,
@@ -22,6 +21,18 @@ function Home() {
 
     try {
       const res = await axios.post("http://localhost:3001/addReview", data);
+      setResponse(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const res = await axios.get('http://localhost:3001/reviews', {
+        params: { location: 'Owens' }
+      });
+      console.log(res.data);
       setResponse(res.data);
     } catch (err) {
       console.error(err);
@@ -39,6 +50,15 @@ function Home() {
           Discover authentic student reviews on dining, gyms, study spots, and
           more across campus. All written by fellow Hokies, for Hokies.
         </Typography>
+
+        <Button
+          variant="contained"
+          size="large"
+          className="Home-button"
+          onClick={getData}
+        >
+          Add a Review
+        </Button>
 
         <img src="vtMap.png" alt="VT Map" className="Home-image" />
       </Box>
