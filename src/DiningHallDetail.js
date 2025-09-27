@@ -46,6 +46,11 @@ function DiningHallDetail() {
 
           const diningHallName = getCurrentUrlSegment();
 
+          if (!diningHallName) {
+            console.warn("No valid dining hall name found in URL.");
+            return; // Stop execution until segment exists
+          }
+
           console.log(diningHallName);
     getData(diningHallName); // Replace with actual dining hall name from route params
   }, []);

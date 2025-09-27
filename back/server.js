@@ -27,6 +27,10 @@ locationMap.set('perryplace', 'Perry');
 
 app.get('/reviews', (req, res) => {
   const location = locationMap.get(req.query.location);
+  if (!location) {
+    res.status(500).send("Invalid location.");
+  }
+
   console.log(location);
 
   db.ref('/Dining Halls/' + location).once('value').then((snapshot) => {
