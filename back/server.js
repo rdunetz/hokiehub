@@ -27,8 +27,9 @@ locationMap.set('perryplace', 'Perry');
 
 app.get('/reviews', (req, res) => {
   const location = locationMap.get(req.query.location);
-  if (!location || location === "") {
+  if (!location || location === "" || location === undefined) {
     res.status(500).send("Invalid location.");
+    return;
   }
 
   console.log(location);

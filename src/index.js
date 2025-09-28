@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
-import App from './App';
 import Home from './Home';
 import Dining from './Dining';
 import DiningHallDetail from './DiningHallDetail';
@@ -21,8 +20,6 @@ root.render(
         <Route path="/review" element={<Review />} />
         <Route path="/dining" element={<Dining />} />
         <Route path="/dining/:diningHallName" element={<DiningHallDetail />} />
-        {/* <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

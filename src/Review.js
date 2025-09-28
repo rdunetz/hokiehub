@@ -1,12 +1,9 @@
-// src/Review.js
-
 import React, { useState } from 'react';
 import { Box, TextField, Button, Rating, Typography, Stack, Autocomplete } from '@mui/material';
 import axios from 'axios';
 
-// The form component
 const ReviewForm = () => {
-  // State for each input field
+
   const [location, setLocation] = useState('');
   const [rating, setRating] = useState(0);
   const [image, setImage] = useState('');
@@ -19,27 +16,23 @@ const ReviewForm = () => {
     { label: 'Squires Food Court', value: "Squires" },
     { label: 'Turner Place', value: "Turner" },
     { label: "D2", value: "D2" },
-    { label: 'Perry Place', value: "Perry" }, 
+    { label: 'Perry Place', value: "Perry" },
   ]
 
-  // Handler for form submission
   const handleSubmit = (event) => {
-    // Prevent the default form submission (page reload)
+
     event.preventDefault();
 
-    // Call the submission function passed via props
     const res = sendData(location, rating, image, description);
 
-    // Optional: Clear the form fields after submission
     setLocation('');
     setRating(0);
     setImage('');
     setDescription('');
-    // window.history.back();
 
     if (res !== null) {
       alert("Review submitted successfully!");
-      window.history.back(); // only runs if the API succeeds
+      window.history.back();
     } else {
       alert("Failed to submit review. Please try again.");
     }
@@ -81,7 +74,8 @@ const ReviewForm = () => {
         boxShadow: 3,
         backgroundColor: 'background.paper',
         maxWidth: '500px',
-        mx: 'auto', // Center the form horizontally
+        mx: 'auto',
+        marginTop: '30px',
       }}
     >
       <Typography variant="h5" component="h2" gutterBottom>
@@ -89,31 +83,23 @@ const ReviewForm = () => {
       </Typography>
 
       <Stack spacing={2}>
-        {/* <TextField
-          label="Location"
-          variant="outlined"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          required
-          fullWidth
-        /> */}
         <Autocomplete
-  disablePortal
-  options={diningHalls}
-  getOptionLabel={(option) => option.label}
-  sx={{ width: '100%' }}
-  value={diningHalls.find((hall) => hall.value === location) || null}
-  onChange={(event, newValue) => {
-    setLocation(newValue ? newValue.value : '');
-  }}
-  renderInput={(params) => (
-    <TextField
-      {...params}
-      label="Dining Hall"
-      required
-    />
-  )}
-/>
+          disablePortal
+          options={diningHalls}
+          getOptionLabel={(option) => option.label}
+          sx={{ width: '100%' }}
+          value={diningHalls.find((hall) => hall.value === location) || null}
+          onChange={(event, newValue) => {
+            setLocation(newValue ? newValue.value : '');
+          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Dining Hall"
+              required
+            />
+          )}
+        />
 
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -153,7 +139,7 @@ const ReviewForm = () => {
         variant="contained"
         color="primary"
         size="large"
-        sx={{ mt: 2 }} // Margin top
+        sx={{ mt: 2 }}
       >
         Submit Review
       </Button>

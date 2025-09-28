@@ -1,0 +1,21 @@
+.dining-detail {
+    margin-top: 10px;
+}
+
+.dining-hall-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dining-detail-title {
+    justify-self: center;
+    font-weight: 600;
+    color: #2C3E50;
+    margin: 0px !important;
+}
+
+.dining-detail-title .accent {
+    font-weight: 500;
+    color: #E67E22;
+  }
